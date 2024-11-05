@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MyWeb.Core\MyWeb.Core.csproj" />
     <ProjectReference Include="..\MyWeb.Dtos\MyWeb.Dtos.csproj" />
     <ProjectReference Include="..\MyWeb.EntityFramework\MyWeb.EntityFramework.csproj" />
-    <ProjectReference Include="..\MyWeb.Models\MyWeb.Core.csproj" />
   </ItemGroup>
 
 </Project>
