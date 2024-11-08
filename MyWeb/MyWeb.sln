@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWeb.Dtos", "..\MyWeb.Dtos
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWeb.EntityFramework", "..\MyWeb.EntityFramework\MyWeb.EntityFramework.csproj", "{7407B8D7-0E72-488A-B60B-F6EB38042222}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWeb.Core", "..\MyWeb.Core\MyWeb.Core.csproj", "{89F4121B-478C-44A6-99C1-6EF044F5060F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWeb.Core", "..\MyWeb.Core\MyWeb.Core.csproj", "{89F4121B-478C-44A6-99C1-6EF044F5060F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWeb.Shared", "..\MyWeb.Shared\MyWeb.Shared.csproj", "{CEDFD08B-E627-4D7F-A86B-335A508A669E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{89F4121B-478C-44A6-99C1-6EF044F5060F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89F4121B-478C-44A6-99C1-6EF044F5060F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89F4121B-478C-44A6-99C1-6EF044F5060F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEDFD08B-E627-4D7F-A86B-335A508A669E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEDFD08B-E627-4D7F-A86B-335A508A669E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEDFD08B-E627-4D7F-A86B-335A508A669E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEDFD08B-E627-4D7F-A86B-335A508A669E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

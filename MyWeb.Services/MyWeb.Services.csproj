@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="XAct.Core.PCL" Version="0.0.5014" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MyWeb.Core\MyWeb.Core.csproj" />
     <ProjectReference Include="..\MyWeb.Dtos\MyWeb.Dtos.csproj" />
     <ProjectReference Include="..\MyWeb.EntityFramework\MyWeb.EntityFramework.csproj" />
