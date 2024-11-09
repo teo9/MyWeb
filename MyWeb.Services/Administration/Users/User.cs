@@ -76,7 +76,7 @@ namespace MyWeb.Services.Administration.Users
                 signingCredentials: credentials);
             // Serializes the JWT token to a string and returns it.
             return new JwtSecurityTokenHandler().WriteToken(token);
-        }
+        } 
     }
 
     public interface IUserService
