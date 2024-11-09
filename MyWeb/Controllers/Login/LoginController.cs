@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyWeb.Dtos.Login;
 using MyWeb.Services.Administration.Users;
+using MyWeb.Shared.Sessions;
 
 namespace MyWeb.Controllers.Login
 {
@@ -10,12 +11,15 @@ namespace MyWeb.Controllers.Login
     public class LoginController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IMySession _mySession;
 
         public LoginController(
-            IUserService userService
+            IUserService userService,
+            IMySession mySession
             )
         {
             _userService = userService;
+            _mySession = mySession;
         }
 
         [HttpPost]

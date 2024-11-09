@@ -13,6 +13,7 @@ namespace MyWeb
         {
             services.AddScoped<Services.Administration.Users.IUserService, Services.Administration.Users.UserService>();
             //services.AddScoped<Services.Administration.UserPermissions.IUserPermissionService, Services.Administration.UserPermissions.IUserPermissionService>();
+            services.AddScoped<Shared.Sessions.IMySession,Shared.Sessions.MySession>();
         }
     }
 }

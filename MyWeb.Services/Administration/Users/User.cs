@@ -5,7 +5,6 @@ using MyWeb.EntityFramework;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using XSystem.Security.Cryptography;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace MyWeb.Services.Administration.Users
@@ -39,15 +38,14 @@ namespace MyWeb.Services.Administration.Users
 
         public string EncryptPassword(string plainText)
         {
-            byte[] bytes = Encoding.UTF8.GetBytes(plainText);
-            SHA256Managed hashstring = new SHA256Managed();
-            byte[] hash = hashstring.ComputeHash(bytes);
-            string hashString = string.Empty;
-            foreach (byte x in hash)
+            var crypt = new System.Security.Cryptography.SHA256Managed();
+            var hash = new System.Text.StringBuilder();
+            byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(plainText));
+            foreach (byte theByte in crypto)
             {
-                hashString += String.Format("{0:x2}", x);
+                hash.Append(theByte.ToString("x2"));
             }
-            return hashString;
+            return hash.ToString();
         }
 
         public string GetJWTToken(Core.Administration.Users.User user)
@@ -59,7 +57,7 @@ namespace MyWeb.Services.Administration.Users
             var claims = new List<Claim>
             {
                 // Custom claim using the user's ID.
-                new Claim("Myapp_User_Id", user.Id.ToString()),
+                new Claim("UserId", user.Id.ToString()), 
                 // Standard claim for user identifier, using username.
                 new Claim(ClaimTypes.NameIdentifier, user.UserName),
                 // Standard claim for user's email.

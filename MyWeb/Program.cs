@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MyWeb;
@@ -11,10 +13,14 @@ using System.Text;
 WebApplicationBuilder builder = WebApplication.CreateBuilder();
 builder.Configuration.AddJsonFile(".\\AppSettings.json");
 
-builder.Services.AddMyWebServices();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options => {
+    options.Cookie.IsEssential = true;
+});
 builder.Services.AddDbContext<MyWebDBContext>();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen( opt =>
+builder.Services.AddEndpointsApiExplorer(); 
+builder.Services.AddHttpContextAccessor();  
+builder.Services.AddSwaggerGen(opt =>
 {
     opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -62,8 +68,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                    };
                });
 
+builder.Services.AddMyWebServices();
+
 WebApplication app = builder.Build();
 
+app.UseMiddleware<MyWeb.Shared.Middleware.AccessMiddleware>();
+app.UseSession();
 app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
