@@ -1,0 +1,19 @@
+{
+     "version": "0.2.0",
+     "configurations": [
+          {
+               "name": "C#: MyWeb Debug",
+               "type": "coreclr",
+               "request": "launch",
+               "preLaunchTask": "Build: solution",
+               "cwd": "${workspaceFolder}/MyWeb",
+               "args": [],
+               "launchBrowser": {
+                    "enabled": true
+               },              
+               "program": "${workspaceFolder}/MyWeb/bin/Debug/net8.0/MyWeb.dll", 
+               "console": "internalConsole",
+               "stopAtEntry": false
+          },
+     ]
+}

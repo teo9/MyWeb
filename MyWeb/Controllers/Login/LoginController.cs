@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyWeb.Dtos.Login;
 using MyWeb.Services.Administration.Users;
+using MyWeb.Shared.Permissions;
 using MyWeb.Shared.Sessions;
 
 namespace MyWeb.Controllers.Login
@@ -38,7 +39,7 @@ namespace MyWeb.Controllers.Login
         }
 
         [HttpPost]
-        [MyAuthorize]
+        [MyAuthorize(permissions: "User")]
         public void LogOut()
         {
 
