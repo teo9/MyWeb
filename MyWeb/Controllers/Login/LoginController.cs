@@ -38,7 +38,7 @@ namespace MyWeb.Controllers.Login
         }
 
         [HttpPost]
-        [Authorize]
+        [MyAuthorize]
         public void LogOut()
         {
 
