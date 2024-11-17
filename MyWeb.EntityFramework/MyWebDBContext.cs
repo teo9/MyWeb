@@ -23,7 +23,6 @@ namespace MyWeb.EntityFramework
          
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Core.Administration.Users.User>().HasMany<Core.Administration.UserPermissions.UserPermission>();
             base.OnModelCreating(modelBuilder);
         }
 
