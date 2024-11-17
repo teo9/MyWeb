@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyWeb.EntityFramework;
 
@@ -10,9 +11,11 @@ using MyWeb.EntityFramework;
 namespace MyWeb.EntityFramework.Migrations
 {
     [DbContext(typeof(MyWebDBContext))]
-    partial class MyWebDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241117013602_RemovedUserToken")]
+    partial class RemovedUserToken
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

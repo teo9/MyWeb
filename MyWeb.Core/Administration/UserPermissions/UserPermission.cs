@@ -5,7 +5,6 @@ namespace MyWeb.Core.Administration.UserPermissions
     public class UserPermission : MyEntity
     {
         public string Name { get; set; }
-        public string Description { get; set; }
         public bool IsStatic { get; set; }
     }
 }

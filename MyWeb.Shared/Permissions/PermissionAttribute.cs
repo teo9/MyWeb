@@ -7,7 +7,7 @@ namespace MyWeb.Shared.Permissions
      
     public class MyAuthorizeAttribute : Attribute
     {
-          string[] Permissions {get; set;}
+          public string[] Permissions {get; private set;}
 
           public MyAuthorizeAttribute(params string[] permissions){
                this.Permissions = permissions;

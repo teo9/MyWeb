@@ -11,11 +11,11 @@ namespace MyWeb.Controllers.Login
     [ApiController]
     public class LoginController : Controller
     {
-        private readonly IUserService _userService;
+        private readonly IUserAdminService _userService;
         private readonly IMySession _mySession;
 
         public LoginController(
-            IUserService userService,
+            IUserAdminService userService,
             IMySession mySession
             )
         {
@@ -23,7 +23,7 @@ namespace MyWeb.Controllers.Login
             _mySession = mySession;
         }
 
-        [HttpPost]
+        [HttpPost]  
         public async Task<IActionResult> Login(LoginInputDto input)
         {
             if (string.IsNullOrWhiteSpace(input.UserName) || string.IsNullOrWhiteSpace(input.Password))
@@ -39,7 +39,7 @@ namespace MyWeb.Controllers.Login
         }
 
         [HttpPost]
-        [MyAuthorize(permissions: "User")]
+        [MyAuthorize(permissions: AppPermissions.User)]
         public void LogOut()
         {
 

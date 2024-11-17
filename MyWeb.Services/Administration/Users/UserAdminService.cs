@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using MyWeb.EntityFramework;
+using MyWeb.Shared.Permissions;
+using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -15,12 +17,12 @@ namespace MyWeb.Services.Administration.Users
     admin admin
      */
 
-    public class UserService : IUserService
+    public class UserAdminService : IUserAdminService
     {
         private readonly MyWebDBContext _DbContext;
         private readonly IConfiguration _configuration;
 
-        public UserService(
+        public UserAdminService(
              MyWebDBContext DbContext,
              IConfiguration configuration
             )
@@ -67,6 +69,10 @@ namespace MyWeb.Services.Administration.Users
             };
             // Adds a role claim for each role associated with the user.
             user.UserPermissions.ToList().ForEach(role => claims.Add(new Claim(ClaimTypes.Role, role.Name)));
+
+            if (user.IsAdmin)
+                claims.Add(new Claim(ClaimTypes.Role, AppPermissions.IsAdmin));
+
             // Creates a new JWT token with specified parameters including issuer, audience, claims, expiration time, and signing credentials.
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
@@ -76,10 +82,10 @@ namespace MyWeb.Services.Administration.Users
                 signingCredentials: credentials);
             // Serializes the JWT token to a string and returns it.
             return new JwtSecurityTokenHandler().WriteToken(token);
-        } 
+        }
     }
 
-    public interface IUserService
+    public interface IUserAdminService
     {
         Task<Core.Administration.Users.User?> GetLoggingUser(string username, string password);
         public string EncryptPassword(string plainText);
