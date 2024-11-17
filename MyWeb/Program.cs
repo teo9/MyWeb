@@ -6,10 +6,15 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MyWeb;
 using MyWeb.EntityFramework;
+using System.Runtime.InteropServices;
 using System.Text;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder();
+
+if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(  OSPlatform.Windows ) )
 builder.Configuration.AddJsonFile(".\\AppSettings.json");
+else 
+builder.Configuration.AddJsonFile("./AppSettings.json");
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options => {
